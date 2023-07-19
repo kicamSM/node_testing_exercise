@@ -9,7 +9,7 @@ const markov = require("./markov");
 
 function generateText(text) {
     let mm = new markov.MarkovMachine(text);
-
+    console.log(mm.makeText())
   }
   
 async function readURLText(url) {

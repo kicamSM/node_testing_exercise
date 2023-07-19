@@ -8,11 +8,11 @@ class MarkovMachine {
 
 
   constructor(text) {
-    console.log('constructor is running')
+    // console.log('constructor is running')
     let words = text.split(/[ \r\n]+/);
     // console.log('words', words)
     this.words = words.filter(c => c !== "");
-    // console.log('this.words', this.words)
+    console.log('this.words', this.words)
     this.makeChains();
   }
 
@@ -37,7 +37,7 @@ class MarkovMachine {
       
   }
   // console.log(typeof(chain['the']))
-  console.log(chain)
+  // console.log(chain)
   this.chain = chain
   this.makeText()
     }
@@ -51,23 +51,21 @@ class MarkovMachine {
   }
 
   makeText(numWords = 100) {
-    // console.log('makeTest is running')
     // TODO 
       let newText = []
-
       let keys = Object.keys(this.chain)
       // console.log('keys:', keys)
-
       let key = MarkovMachine.random(keys);
 
       while(newText.length < numWords && key !== null) {
         newText.push(key)
         key = MarkovMachine.random(this.chain[key])
+        // console.log('key', key)
       }
+    
+        let compiledText = newText.join(' ');
 
-        console.log('newText', newText)
-        let compiledText = newText.join(' ')
-        console.log('compiledText', compiledText)
+        return compiledText
       }
     
 }
@@ -77,7 +75,7 @@ class MarkovMachine {
 
 module.exports = { MarkovMachine }; 
 
-// let mm = new MarkovMachine("the cat in the hat");
+// let mm = new MarkovMachine("the, cat, in the hat");
 
 // let mm1 = new MarkovMachine("Not on a train! Not in a tree!");
 // let mm2 = new MarkovMachine("I would not like them Here or there I would not like them Anywhere I do not like Green eggs and ham I do not like them Sam-I-am");
